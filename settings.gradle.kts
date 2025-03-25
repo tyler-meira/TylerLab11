@@ -20,4 +20,4 @@ dependencyResolutionManagement {
 }
 
 rootProject.name = "TylerLab10"
-include(":app")
+include(":TylerModule10")
