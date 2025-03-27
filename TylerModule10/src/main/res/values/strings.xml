@@ -2,4 +2,11 @@
     <string name="app_name">TylerLab10</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string-array name="spinnerChoices">
+        <item>Pikachu</item>
+        <item>Charmander</item>
+        <item>Buizel</item>
+        <item>Venasaur</item>
+    </string-array>
+
 </resources>

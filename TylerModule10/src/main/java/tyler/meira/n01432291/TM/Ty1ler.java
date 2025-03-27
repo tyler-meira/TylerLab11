@@ -1,26 +1,43 @@
 package tyler.meira.n01432291.TM;
 
+import static java.lang.Thread.sleep;
+
+import android.annotation.SuppressLint;
+import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.os.AsyncTask;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
 
+import android.os.Handler;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.ProgressBar;
+import android.widget.Spinner;
+import android.widget.Toast;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link Ty1ler#newInstance} factory method to
- * create an instance of this fragment.
- */
+import java.io.IOException;
+import java.io.InputStream;
+import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
+import java.net.ProtocolException;
+import java.net.URL;
+import java.util.Calendar;
+import java.util.Date;
+
 public class Ty1ler extends Fragment {
 
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
 
-    // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
 
@@ -28,15 +45,6 @@ public class Ty1ler extends Fragment {
         // Required empty public constructor
     }
 
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment Ty1ler.
-     */
-    // TODO: Rename and change types and number of parameters
     public static Ty1ler newInstance(String param1, String param2) {
         Ty1ler fragment = new Ty1ler();
         Bundle args = new Bundle();
@@ -59,6 +67,105 @@ public class Ty1ler extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_ty1ler, container, false);
+        View view = inflater.inflate(R.layout.fragment_ty1ler, container, false);
+
+        Spinner spinner = view.findViewById(R.id.spinner);
+        Button btnDownload = view.findViewById(R.id.btnDownload);
+        ProgressBar progressBar = view.findViewById(R.id.progressBar);
+
+        progressBar.setVisibility(View.INVISIBLE);
+
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(
+                getContext(),
+                R.array.spinnerChoices,
+                android.R.layout.simple_spinner_item
+        );
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinner.setAdapter(adapter);
+
+        btnDownload.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                if(spinner.getSelectedItem().toString().equals("Pikachu")){
+                    loading(view);
+                    setImage("https://preview.redd.it/a-pikachu-i-drew-for-a-deviantart-event-v0-s45ljvl87za81.jpg?auto=webp&s=e3f5d369b137d7a731e92ef9c739f8aa32ab3c0e",view);
+                }
+                if(spinner.getSelectedItem().toString().equals("Charmander")){
+                    loading(view);
+                    setImage("https://d.newsweek.com/en/full/1653395/pokemon-go-charmander-community-day-2020.jpg?w=1600&h=1600&l=37&t=22&q=88&f=ef11e70682f86d078d7438316f3704ff",view);
+                }
+                if(spinner.getSelectedItem().toString().equals("Buizel")){
+                    loading(view);
+                    setImage("https://i.pinimg.com/736x/f1/19/0c/f1190c31b90d6e62bc5c99eea2d5d948.jpg",view);
+                }
+                if(spinner.getSelectedItem().toString().equals("Venasaur")){
+                    loading(view);
+                    setImage("https://lozshop.b-cdn.net/wp-content/uploads/2019/11/CHAKRA-6606-Medium-Pokemon-Venusaur.png",view);
+                }
+
+            }
+        });
+
+
+        return view;
     }
+
+    @SuppressLint("StaticFieldLeak")
+    public void setImage(String link, View view) {
+        new AsyncTask<Void, Void, Bitmap>() {
+            @Override
+            protected Bitmap doInBackground(Void... voids) {
+                HttpURLConnection connection = null;
+                try {
+                    URL url = new URL(link);
+                    connection = (HttpURLConnection) url.openConnection();
+                    connection.setRequestMethod("GET");
+                    connection.connect();
+
+                    int responseCode = connection.getResponseCode();
+                    if (responseCode == HttpURLConnection.HTTP_OK) {
+                        InputStream inputStream = connection.getInputStream();
+                        return BitmapFactory.decodeStream(inputStream);
+                    }
+                } catch (Exception e) {
+                   // Do nothing
+                } finally {
+                    if (connection != null) {
+                        connection.disconnect();
+                    }
+                }
+                return null;
+            }
+
+            @Override
+            protected void onPostExecute(Bitmap bitmap) {
+                ImageView imageView = view.findViewById(R.id.imageView);
+                if (bitmap != null) {
+                    imageView.setImageBitmap(bitmap);
+                } else {
+                    Toast.makeText(getContext(), "Failed to load image", Toast.LENGTH_SHORT).show();
+                }
+            }
+        }.execute();
+    }
+
+    public void loading(View view){
+        ImageView imageView = view.findViewById(R.id.imageView);
+        ProgressBar progressBar = view.findViewById(R.id.progressBar);
+
+        imageView.setVisibility(View.INVISIBLE);
+        progressBar.setVisibility(View.VISIBLE);
+
+        new Handler().postDelayed(() -> {
+            imageView.setVisibility(View.VISIBLE);
+            progressBar.setVisibility(View.INVISIBLE);
+        }, 5000);
+
+
+
+
+    }
+
+
 }
