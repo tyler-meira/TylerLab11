@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/Tyler"
+        android:title="Tyler"
+        android:icon="@drawable/left"
+        />
+    <item
+        android:id="@+id/Meira"
+        android:title="Meira"
+        android:icon="@drawable/doubleleft" />
+    <item
+        android:id="@+id/N01432291"
+        android:title="N01432291"
+        android:icon="@drawable/doubleright"
+        />
+    <item
+        android:id="@+id/TM"
+        android:title="TM"
+        android:icon="@drawable/right"/>
+
+</menu>
