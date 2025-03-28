@@ -238,9 +238,9 @@ public class Me2ira extends Fragment {
                 strResults += "\nDescription: " + jsonObject.getString("description");
             }
             if(isCelsius){
-                temp.setText("Temperature: " + mainObject.getInt("temp"));
+                temp.setText("Temperature: " + round(mainObject.getDouble("temp")));
             }else{
-                temp.setText("Temperature: " + celsiusToFahrenheit(mainObject.getInt("temp")));
+                temp.setText("Temperature: " + round(celsiusToFahrenheit(mainObject.getDouble("temp"))));
             }
             details.setText(strResults);
         } catch (Exception e) {
@@ -251,6 +251,9 @@ public class Me2ira extends Fragment {
 
     private double celsiusToFahrenheit(double celsius) {
         return (celsius * 9/5) + 32;
+    }
+    private double round(double num){
+        return Math.round(num * Math.pow(10,1)) / Math.pow(10,1);
     }
 
 }
