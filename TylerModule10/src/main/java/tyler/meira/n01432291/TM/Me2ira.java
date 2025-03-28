@@ -145,7 +145,7 @@ public class Me2ira extends Fragment {
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
 
                 if(parent.getSelectedItem().toString().equals("Toronto")){
-                    weather("43.6532","79.3832");
+                    weather("43.6532","-79.3832");
                 }else if(parent.getSelectedItem().toString().equals("Amesterdam")){
                     weather("52.3676", "4.9041");
                 }else if(parent.getSelectedItem().toString().equals("Lisbon")){
