@@ -1,4 +1,20 @@
 <resources>
     <string name="app_name">TylerLab10</string>
+    <string name="hello_blank_fragment">Bonjour fragment vide</string>
+    <string-array name="spinnerChoices">
+        <item>Pikachu</item>
+        <item>Salamèche</item>
+        <item>Mustébouée</item>
+        <item>Florizarre</item>
+    </string-array>
+    <string-array name="countries">
+        <item>Toronto</item>
+        <item>Amsterdam</item>
+        <item>Lisbonne</item>
+        <item>New York</item>
+        <item>Tokyo</item>
+    </string-array>
+
     <string name="apikey">6b7a08aa941fe519faad839637ee99a8</string>
+
 </resources>
