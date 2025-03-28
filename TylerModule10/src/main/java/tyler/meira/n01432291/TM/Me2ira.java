@@ -244,7 +244,7 @@ public class Me2ira extends Fragment {
             }
             details.setText(strResults);
         } catch (Exception e) {
-            Log.e("WeatherError", "Exception: " + e.getMessage());
+            Toast.makeText(getContext(), "WeatherError: " + e.getMessage(), Toast.LENGTH_SHORT).show();
             e.printStackTrace();
         }
     }
