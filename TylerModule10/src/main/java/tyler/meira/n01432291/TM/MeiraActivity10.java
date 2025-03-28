@@ -32,17 +32,18 @@ public class MeiraActivity10 extends AppCompatActivity {
 
         //Fragments
 
-        Ty1ler home = new Ty1ler();
+        Ty1ler tyler = new Ty1ler();
+        Me2ira meira = new Me2ira();
 
-        setCurrentFragment(home);
+        setCurrentFragment(tyler);
 
         BottomNavigationView bottomNavigationView = findViewById(R.id.tylBottomNav);
         bottomNavigationView.setOnItemSelectedListener(item -> {
             if(item.getItemId() == R.id.Tyler){
-                setCurrentFragment(home);
+                setCurrentFragment(tyler);
             }
             if(item.getItemId() == R.id.Meira){
-                //setCurrentFragment(tylerFrag);
+                setCurrentFragment(meira);
             }
             if(item.getItemId() == R.id.N01432291){
                 //setCurrentFragment(personFrag);

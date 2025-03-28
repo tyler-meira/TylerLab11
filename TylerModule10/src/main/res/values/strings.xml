@@ -8,5 +8,12 @@
         <item>Buizel</item>
         <item>Venasaur</item>
     </string-array>
+    <string-array name="countries">
+        <item>Toronto</item>
+        <item>Amesterdam</item>
+        <item>Lisbon</item>
+        <item>New York City</item>
+        <item>Tokyo</item>
+    </string-array>
 
 </resources>
