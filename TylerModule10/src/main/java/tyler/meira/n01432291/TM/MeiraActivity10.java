@@ -34,6 +34,8 @@ public class MeiraActivity10 extends AppCompatActivity {
 
         Ty1ler tyler = new Ty1ler();
         Me2ira meira = new Me2ira();
+        N01432291 nNum = new N01432291();
+        T4M four = new T4M();
 
         setCurrentFragment(tyler);
 
@@ -46,10 +48,10 @@ public class MeiraActivity10 extends AppCompatActivity {
                 setCurrentFragment(meira);
             }
             if(item.getItemId() == R.id.N01432291){
-                //setCurrentFragment(personFrag);
+                setCurrentFragment(nNum);
             }
             if(item.getItemId() == R.id.TM){
-                //setCurrentFragment(settingsFrag);
+                setCurrentFragment(four);
 
             }
 
