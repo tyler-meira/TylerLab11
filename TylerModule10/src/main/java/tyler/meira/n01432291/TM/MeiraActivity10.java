@@ -60,7 +60,6 @@ public class MeiraActivity10 extends AppCompatActivity {
     }
 
     public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the tools bar if it is present.
         getMenuInflater().inflate(R.menu.menu, menu);
         return true;
     }
