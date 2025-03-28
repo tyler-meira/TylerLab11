@@ -32,6 +32,8 @@ import java.net.ProtocolException;
 import java.net.URL;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 public class Ty1ler extends Fragment {
 
@@ -40,6 +42,8 @@ public class Ty1ler extends Fragment {
 
     private String mParam1;
     private String mParam2;
+
+    private final ExecutorService executorService = Executors.newSingleThreadExecutor();
 
     public Ty1ler() {
         // Required empty public constructor
@@ -111,43 +115,31 @@ public class Ty1ler extends Fragment {
         return view;
     }
 
-    @SuppressLint("StaticFieldLeak")
     public void setImage(String link, View view) {
-        new AsyncTask<Void, Void, Bitmap>() {
-            @Override
-            protected Bitmap doInBackground(Void... voids) {
-                HttpURLConnection connection = null;
-                try {
-                    URL url = new URL(link);
-                    connection = (HttpURLConnection) url.openConnection();
-                    connection.setRequestMethod("GET");
-                    connection.connect();
+        executorService.execute(() -> {
+            try {
+                URL url = new URL(link);
+                HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+                connection.setRequestMethod("GET");
+                connection.connect();
 
-                    int responseCode = connection.getResponseCode();
-                    if (responseCode == HttpURLConnection.HTTP_OK) {
-                        InputStream inputStream = connection.getInputStream();
-                        return BitmapFactory.decodeStream(inputStream);
-                    }
-                } catch (Exception e) {
-                   // Do nothing
-                } finally {
-                    if (connection != null) {
-                        connection.disconnect();
-                    }
+                if (connection.getResponseCode() == HttpURLConnection.HTTP_OK) {
+                    InputStream inputStream = connection.getInputStream();
+                    Bitmap bitmap = BitmapFactory.decodeStream(inputStream);
+                    view.post(() -> {
+                        ImageView imageView = view.findViewById(R.id.imageView);
+                        if (bitmap != null) {
+                            imageView.setImageBitmap(bitmap);
+                        } else {
+                            Toast.makeText(view.getContext(), "Failed to load image", Toast.LENGTH_SHORT).show();
+                        }
+                    });
                 }
-                return null;
+                connection.disconnect();
+            } catch (Exception e) {
+                Log.e("setImage", "Error loading image", e);
             }
-
-            @Override
-            protected void onPostExecute(Bitmap bitmap) {
-                ImageView imageView = view.findViewById(R.id.imageView);
-                if (bitmap != null) {
-                    imageView.setImageBitmap(bitmap);
-                } else {
-                    Toast.makeText(getContext(), "Failed to load image", Toast.LENGTH_SHORT).show();
-                }
-            }
-        }.execute();
+        });
     }
 
     public void loading(View view){
