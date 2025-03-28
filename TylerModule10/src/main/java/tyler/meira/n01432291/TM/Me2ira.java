@@ -170,7 +170,7 @@ public class Me2ira extends Fragment {
 
     private void weather(String longitude, String lattitude){
 
-        url = "https://api.openweathermap.org/data/2.5/weather?lat="+longitude+"&lon="+lattitude+"&units=metric&appid=6b7a08aa941fe519faad839637ee99a8";
+        url = "https://api.openweathermap.org/data/2.5/weather?lat="+longitude+"&lon="+lattitude+"&units=metric&appid="+getResources().getString(R.string.apikey);
 
         Log.d("URL",url);
         executorService.execute(new Runnable() {
