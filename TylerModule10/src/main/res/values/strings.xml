@@ -15,6 +15,11 @@
         <item>New York City</item>
         <item>Tokyo</item>
     </string-array>
+    <string-array name="Videos">
+        <item>Video1</item>
+        <item>Video2</item>
+        <item>Video3</item>
+    </string-array>
 
     <string name="apikey">6b7a08aa941fe519faad839637ee99a8</string>
 

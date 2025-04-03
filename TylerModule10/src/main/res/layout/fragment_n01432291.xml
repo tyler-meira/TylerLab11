@@ -26,6 +26,7 @@
         app:layout_constraintVertical_bias="0.082" />
 
     <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recycleView"
         android:layout_width="412dp"
         android:layout_height="302dp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -36,8 +37,8 @@
 
     <WebView
         android:id="@+id/webView"
-        android:layout_width="409dp"
-        android:layout_height="312dp"
+        android:layout_width="407dp"
+        android:layout_height="301dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
