@@ -2,11 +2,29 @@ package tyler.meira.n01432291.TM;
 
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
+import android.text.InputFilter;
+import android.text.TextUtils;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.Toast;
+
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
+import java.util.ArrayList;
+import java.util.regex.Pattern;
 
 
 public class TMNT extends Fragment {
@@ -17,6 +35,15 @@ public class TMNT extends Fragment {
 
     private String mParam1;
     private String mParam2;
+
+
+    private EditText editCourseName,editCourseDesc;
+    private Button btnAdd,btnDelete;
+    private RecyclerView recyclerView;
+    private CourseAdapter adapter;
+    private ArrayList<CourseModal> courseList;
+    private DatabaseReference databaseReference;
+
 
     public TMNT() {
         // Required empty public constructor
@@ -44,6 +71,102 @@ public class TMNT extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_t_m_n_t, container, false);
+        View view = inflater.inflate(R.layout.fragment_t_m_n_t, container, false);
+
+        editCourseName = view.findViewById(R.id.editCourseName);
+        editCourseDesc = view.findViewById(R.id.editCourseDesc);
+        btnAdd = view.findViewById(R.id.btnAdd);
+        btnDelete = view.findViewById(R.id.btnDelete);
+        recyclerView = view.findViewById(R.id.courseRv);
+
+        editCourseName.setFilters(new InputFilter[]{new InputFilter.AllCaps()});
+
+        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+        courseList = new ArrayList<>();
+        adapter = new CourseAdapter(courseList,getContext());
+        recyclerView.setAdapter(adapter);
+
+
+        FirebaseDatabase database = FirebaseDatabase.getInstance();
+        databaseReference = database.getReference("Courses");
+
+        fetchCourses();
+
+        btnAdd.setOnClickListener(v -> addCourse());
+        btnDelete.setOnClickListener(v -> deleteAllCourses());
+
+        return view;
     }
+
+
+    private void addCourse(){
+        String name = editCourseName.getText().toString().trim();
+        String desc = editCourseDesc.getText().toString().trim();
+
+        // Validate input fields
+        if (TextUtils.isEmpty(name)) {
+            editCourseName.setError("Course name is required!");
+            return;
+        }
+
+        if (!isValidCourseName(name)) {
+            editCourseName.setError("Invalid format! Use: ABCD-1234");
+            return;
+        }
+
+        if (TextUtils.isEmpty(desc)) {
+            editCourseDesc.setError("Course description is required!");
+            return;
+        }
+
+        String id = databaseReference.push().getKey();
+        CourseModal course = new CourseModal(id,name,desc);
+        databaseReference.child(id).setValue(course);
+
+        editCourseName.setText("");
+
+        editCourseDesc.setText("");
+
+        Toast.makeText(getContext(), "Course added!", Toast.LENGTH_SHORT).show();
+    }
+
+    private boolean isValidCourseName(String name) {
+        return Pattern.matches("^[A-Z]{4}-\\d{3,4}$", name);
+    }
+
+    private void deleteAllCourses() {
+        if (courseList.isEmpty()) {
+            Toast.makeText(getContext(), "No data to delete.", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+        databaseReference.removeValue();
+        courseList.clear();
+        adapter.notifyDataSetChanged();
+        Toast.makeText(getContext(), "All courses deleted!", Toast.LENGTH_SHORT).show();
+    }
+
+    private void fetchCourses(){
+        databaseReference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                courseList.clear();
+
+                for (DataSnapshot dataSnapshot : snapshot.getChildren()){
+                    CourseModal modal = dataSnapshot.getValue(CourseModal.class);
+                    courseList.add(modal);
+                    Log.d("TMNT", "Fetched Course: " + modal.getCourseName());
+                }
+                adapter.notifyDataSetChanged();
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+                Toast.makeText(getContext(), "Couldnt Fetch Data!", Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+
+
+
 }

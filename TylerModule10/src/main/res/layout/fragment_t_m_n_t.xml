@@ -13,7 +13,7 @@
         android:id="@+id/textView4"
         android:layout_width="235dp"
         android:layout_height="32dp"
-        android:text="@string/hello_blank_fragment"
+        android:text="Tyler Meira (N01432291)"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -21,12 +21,13 @@
         app:layout_constraintVertical_bias="0.082"
         android:textColor="@color/red"
         android:textSize="20sp"
-        android:textStyle="bold|italic"/>
+        android:textStyle="bold|italic"
+        android:textAlignment="center"/>
 
 
     <EditText
         android:id="@+id/editCourseName"
-        android:layout_width="212dp"
+        android:layout_width="match_parent"
         android:layout_height="47dp"
         android:ems="10"
         android:hint="Enter Course Name"
@@ -40,7 +41,7 @@
 
     <EditText
         android:id="@+id/editCourseDesc"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
         android:hint="Enter Course Description"
@@ -76,9 +77,13 @@
         app:layout_constraintVertical_bias="0.325" />
 
     <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/courseRv"
         android:layout_width="412dp"
         android:layout_height="443dp"
-        tools:layout_editor_absoluteX="1dp"
-        tools:layout_editor_absoluteY="287dp" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

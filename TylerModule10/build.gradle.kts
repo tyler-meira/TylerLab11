@@ -1,5 +1,6 @@
 plugins {
     alias(libs.plugins.android.application)
+    alias(libs.plugins.google.gms.google.services)
 }
 
 android {
@@ -36,11 +37,13 @@ dependencies {
     implementation ("androidx.recyclerview:recyclerview:1.4.0")
     implementation("com.google.android.gms:play-services-ads:24.1.0")
     implementation ("com.google.android.gms:play-services-ads:21.2.0")
+    implementation("com.google.firebase:firebase-database:20.0.5")
     implementation(libs.appcompat)
     implementation(libs.material)
     implementation(libs.activity)
     implementation(libs.constraintlayout)
     implementation(libs.play.services.ads)
+    implementation(libs.firebase.database)
     testImplementation(libs.junit)
     androidTestImplementation(libs.ext.junit)
     androidTestImplementation(libs.espresso.core)
