@@ -17,15 +17,15 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
 
-public class CourseAdapter extends RecyclerView.Adapter<CourseAdapter.ViewHolder> {
+public class VideoAdapter extends RecyclerView.Adapter<VideoAdapter.ViewHolder> {
 
     // creating a variable for array list and context.
-    private ArrayList<CourseModal> courseModalArrayList;
+    private ArrayList<VideoModal> videoModalArrayList;
     private Context context;
 
     // creating a constructor for our variables.
-    public CourseAdapter(ArrayList<CourseModal> courseModalArrayList, Context context) {
-        this.courseModalArrayList = courseModalArrayList;
+    public VideoAdapter(ArrayList<VideoModal> videoModalArrayList, Context context) {
+        this.videoModalArrayList = videoModalArrayList;
         this.context = context;
     }
 
@@ -40,14 +40,14 @@ public class CourseAdapter extends RecyclerView.Adapter<CourseAdapter.ViewHolder
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         // setting data to our views of recycler view.
-        CourseModal modal = courseModalArrayList.get(position);
+        VideoModal modal = videoModalArrayList.get(position);
         holder.courseDescTV.setText(modal.getCourseDescription());
     }
 
     @Override
     public int getItemCount() {
         // returning the size of array list.
-        return courseModalArrayList.size();
+        return videoModalArrayList.size();
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {

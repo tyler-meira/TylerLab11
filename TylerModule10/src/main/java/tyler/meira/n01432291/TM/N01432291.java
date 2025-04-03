@@ -12,8 +12,6 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.webkit.WebView;
-import android.widget.Button;
-import android.widget.EditText;
 
 import java.util.ArrayList;
 
@@ -33,8 +31,8 @@ public class N01432291 extends Fragment {
     private RecyclerView courseRV;
     private WebView webView;
 
-    private CourseAdapter adapter;
-    private ArrayList<CourseModal> videoDesc;
+    private VideoAdapter adapter;
+    private ArrayList<VideoModal> videoDesc;
 
     public static N01432291 newInstance(String param1, String param2) {
         N01432291 fragment = new N01432291();
@@ -122,12 +120,12 @@ public class N01432291 extends Fragment {
         }
 
         for (String desc : descriptions) {
-            videoDesc.add(new CourseModal(desc));
+            videoDesc.add(new VideoModal(desc));
         }
     }
 
     private void buildRecyclerView() {
-        adapter = new CourseAdapter(videoDesc, getContext());
+        adapter = new VideoAdapter(videoDesc, getContext());
         LinearLayoutManager manager = new LinearLayoutManager(getContext());
         courseRV.setHasFixedSize(true);
         courseRV.setLayoutManager(manager);
