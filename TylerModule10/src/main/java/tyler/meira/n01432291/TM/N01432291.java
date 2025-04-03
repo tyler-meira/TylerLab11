@@ -2,13 +2,16 @@ package tyler.meira.n01432291.TM;
 
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
+import android.webkit.WebView;
 import android.widget.Button;
 import android.widget.EditText;
 
@@ -28,6 +31,7 @@ public class N01432291 extends Fragment {
     }
 
     private RecyclerView courseRV;
+    private WebView webView;
 
     private CourseAdapter adapter;
     private ArrayList<CourseModal> videoDesc;
@@ -56,6 +60,12 @@ public class N01432291 extends Fragment {
         View view = inflater.inflate(R.layout.fragment_n01432291, container, false);
 
         courseRV = view.findViewById(R.id.recycleView);
+        webView = view.findViewById(R.id.webView);
+
+        webView.getSettings().setJavaScriptEnabled(true);
+        webView.getSettings().setAllowFileAccess(true);
+        webView.getSettings().setAllowContentAccess(true);
+
 
         if (courseRV == null) {
             throw new NullPointerException("RecyclerView not found. Check XML ID.");
@@ -63,6 +73,42 @@ public class N01432291 extends Fragment {
 
         fillArrayList();
         buildRecyclerView();
+
+        // Add the OnItemTouchListener here to detect clicks
+        courseRV.addOnItemTouchListener(new RecyclerView.OnItemTouchListener() {
+            @Override
+            public boolean onInterceptTouchEvent(@NonNull RecyclerView rv, @NonNull MotionEvent e) {
+                // Detect if a touch event is a click (use GestureDetector)
+                if (e.getAction() == MotionEvent.ACTION_UP) {
+                    View childView = rv.findChildViewUnder(e.getX(), e.getY());
+                    if (childView != null) {
+                        int position = rv.getChildAdapterPosition(childView);
+
+                        if(position == 0) {
+                            webView.loadUrl("https://www.youtube.com/embed/AF8d72mA41M?si=ojoifn9zhz5QqU8r");
+                        }else if(position == 1) {
+                            webView.loadUrl("https://www.youtube.com/embed/iSNsgj1OCLA?si=mxQkPoTN_xAnjN26");
+                        }else if(position == 2) {
+                            webView.loadUrl("https://www.youtube.com/embed/w5ebcowAJD8?si=3cuuWxuRWOQHtWgC");
+                        }
+
+
+                        return true;
+                    }
+                }
+                return false;
+            }
+
+            @Override
+            public void onTouchEvent(@NonNull RecyclerView rv, @NonNull MotionEvent e) {
+                // Not needed for clicks but required by interface
+            }
+
+            @Override
+            public void onRequestDisallowInterceptTouchEvent(boolean disallowIntercept) {
+                // Not needed for clicks but required by interface
+            }
+        });
 
         return view;
     }
