@@ -1,6 +1,6 @@
 <resources>
-    <string name="app_name">TylerLab10</string>
-    <string name="hello_blank_fragment">Bonjour fragment vide</string>
+    <string name="app_name">TylerLab11</string>
+    <string name="hello_blank_fragment">Bonjour fragment vierge</string>
     <string-array name="spinnerChoices">
         <item>Pikachu</item>
         <item>Salamèche</item>
@@ -13,6 +13,11 @@
         <item>Lisbonne</item>
         <item>New York</item>
         <item>Tokyo</item>
+    </string-array>
+    <string-array name="Videos">
+        <item>Vidéo1</item>
+        <item>Vidéo2</item>
+        <item>Vidéo3</item>
     </string-array>
 
     <string name="apikey">6b7a08aa941fe519faad839637ee99a8</string>
