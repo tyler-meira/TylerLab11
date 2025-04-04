@@ -5,9 +5,9 @@
     android:id="@+id/frameLayout5"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".TMNT">
+    tools:context=".TMNT"
+    android:background="@color/lightgreen">
 
-    <!-- TODO: Update blank fragment layout -->
 
     <TextView
         android:id="@+id/textView4"
