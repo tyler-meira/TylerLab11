@@ -157,7 +157,6 @@ public class T4M extends Fragment {
 
         lm = (LocationManager) getActivity().getSystemService(Context.LOCATION_SERVICE);
 
-        // Check if GPS is enabled
         boolean isGPSEnabled = lm.isProviderEnabled(LocationManager.GPS_PROVIDER);
         boolean isNetworkEnabled = lm.isProviderEnabled(LocationManager.NETWORK_PROVIDER);
 

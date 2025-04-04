@@ -99,7 +99,7 @@ public class N01432291 extends Fragment {
 
             @Override
             public void onTouchEvent(@NonNull RecyclerView rv, @NonNull MotionEvent e) {
-                // Not needed for clicks but required by interface
+
             }
 
             @Override
