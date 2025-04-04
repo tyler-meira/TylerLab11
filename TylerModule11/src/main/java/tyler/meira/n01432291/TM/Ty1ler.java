@@ -2,11 +2,8 @@ package tyler.meira.n01432291.TM;
 
 import static java.lang.Thread.sleep;
 
-import android.annotation.SuppressLint;
-import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.os.AsyncTask;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -16,7 +13,6 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -24,14 +20,9 @@ import android.widget.ProgressBar;
 import android.widget.Spinner;
 import android.widget.Toast;
 
-import java.io.IOException;
 import java.io.InputStream;
 import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
-import java.net.ProtocolException;
 import java.net.URL;
-import java.util.Calendar;
-import java.util.Date;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
@@ -73,9 +64,9 @@ public class Ty1ler extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_ty1ler, container, false);
 
-        Spinner spinner = view.findViewById(R.id.spinner);
-        Button btnDownload = view.findViewById(R.id.btnDownload);
-        ProgressBar progressBar = view.findViewById(R.id.progressBar);
+        Spinner spinner = view.findViewById(R.id.tylSpinner);
+        Button btnDownload = view.findViewById(R.id.tylBtnDownload);
+        ProgressBar progressBar = view.findViewById(R.id.tylProgressBar);
 
         progressBar.setVisibility(View.INVISIBLE);
 
@@ -127,7 +118,7 @@ public class Ty1ler extends Fragment {
                     InputStream inputStream = connection.getInputStream();
                     Bitmap bitmap = BitmapFactory.decodeStream(inputStream);
                     view.post(() -> {
-                        ImageView imageView = view.findViewById(R.id.imageView);
+                        ImageView imageView = view.findViewById(R.id.tylImageView);
                         if (bitmap != null) {
                             imageView.setImageBitmap(bitmap);
                         } else {
@@ -143,8 +134,8 @@ public class Ty1ler extends Fragment {
     }
 
     public void loading(View view){
-        ImageView imageView = view.findViewById(R.id.imageView);
-        ProgressBar progressBar = view.findViewById(R.id.progressBar);
+        ImageView imageView = view.findViewById(R.id.tylImageView);
+        ProgressBar progressBar = view.findViewById(R.id.tylProgressBar);
 
         imageView.setVisibility(View.INVISIBLE);
         progressBar.setVisibility(View.VISIBLE);

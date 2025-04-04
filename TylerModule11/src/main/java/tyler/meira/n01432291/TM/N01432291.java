@@ -57,8 +57,8 @@ public class N01432291 extends Fragment {
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_n01432291, container, false);
 
-        courseRV = view.findViewById(R.id.recycleView);
-        webView = view.findViewById(R.id.webView);
+        courseRV = view.findViewById(R.id.tylRecycle1);
+        webView = view.findViewById(R.id.tylWebView);
 
         webView.getSettings().setJavaScriptEnabled(true);
         webView.getSettings().setAllowFileAccess(true);

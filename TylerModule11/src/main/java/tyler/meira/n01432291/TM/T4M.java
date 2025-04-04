@@ -31,7 +31,6 @@ import android.widget.Toast;
 
 import com.google.android.gms.ads.AdListener;
 import com.google.android.gms.ads.AdRequest;
-import com.google.android.gms.ads.AdSize;
 import com.google.android.gms.ads.AdView;
 import com.google.android.gms.ads.LoadAdError;
 import com.google.android.material.snackbar.Snackbar;
@@ -95,10 +94,10 @@ public class T4M extends Fragment {
         }
 
         // Get views
-        date = view.findViewById(R.id.date);
-        textClock = view.findViewById(R.id.textClock);
-        adView = view.findViewById(R.id.adView);
-        btnLocation = view.findViewById(R.id.button);
+        date = view.findViewById(R.id.tylDate);
+        textClock = view.findViewById(R.id.tylTextClock);
+        adView = view.findViewById(R.id.tylAdView);
+        btnLocation = view.findViewById(R.id.tylButton);
 
         AdRequest adRequest = new AdRequest.Builder().build();
         adView.loadAd(adRequest);

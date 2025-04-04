@@ -10,7 +10,7 @@
 
     <!-- TODO: Update blank fragment layout -->
     <TextView
-        android:id="@+id/textView2"
+        android:id="@+id/tylText2"
         android:layout_width="356dp"
         android:layout_height="45dp"
         android:textAlignment="center"
@@ -26,7 +26,7 @@
         app:layout_constraintVertical_bias="0.051" />
 
     <RadioGroup
-        android:id="@+id/rg"
+        android:id="@+id/tylRG"
         android:layout_width="169dp"
         android:layout_height="106dp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -36,21 +36,21 @@
         app:layout_constraintVertical_bias="0.217">
 
         <RadioButton
-            android:id="@+id/radioCelsius"
+            android:id="@+id/tylRadioCelsius"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:checked="true"
             android:text="Celsius" />
 
         <RadioButton
-            android:id="@+id/radioFahrenheit"
+            android:id="@+id/tylRadioFahrenheit"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Fahrenheit" />
     </RadioGroup>
 
     <Spinner
-        android:id="@+id/spinner2"
+        android:id="@+id/tylSpinner2"
         android:layout_width="287dp"
         android:layout_height="22dp"
         android:textAlignment="center"
@@ -61,7 +61,7 @@
         app:layout_constraintVertical_bias="0.376" />
 
     <TextView
-        android:id="@+id/txtTemperature"
+        android:id="@+id/tylTemp"
         android:layout_width="225dp"
         android:layout_height="35dp"
         android:text="TextView"
@@ -76,7 +76,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/txtDetails"
+        android:id="@+id/tylDetails"
         android:layout_width="223dp"
         android:layout_height="309dp"
         android:text="TextView"

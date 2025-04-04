@@ -10,7 +10,7 @@
 
 
     <TextView
-        android:id="@+id/textView4"
+        android:id="@+id/tylText4"
         android:layout_width="235dp"
         android:layout_height="32dp"
         android:text="Tyler Meira (N01432291)"
@@ -26,7 +26,7 @@
 
 
     <EditText
-        android:id="@+id/editCourseName"
+        android:id="@+id/tylEditName"
         android:layout_width="match_parent"
         android:layout_height="47dp"
         android:ems="10"
@@ -40,7 +40,7 @@
         app:layout_constraintVertical_bias="0.154" />
 
     <EditText
-        android:id="@+id/editCourseDesc"
+        android:id="@+id/tylEditDesc"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
@@ -53,7 +53,7 @@
         app:layout_constraintVertical_bias="0.237" />
 
     <Button
-        android:id="@+id/btnAdd"
+        android:id="@+id/tylBtnAdd"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Add"
@@ -65,7 +65,7 @@
         app:layout_constraintVertical_bias="0.325" />
 
     <Button
-        android:id="@+id/btnDelete"
+        android:id="@+id/tylBtnDelete"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Delete"
@@ -77,7 +77,7 @@
         app:layout_constraintVertical_bias="0.325" />
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/courseRv"
+        android:id="@+id/tylCourseRV"
         android:layout_width="412dp"
         android:layout_height="443dp"
         app:layout_constraintBottom_toBottomOf="parent"

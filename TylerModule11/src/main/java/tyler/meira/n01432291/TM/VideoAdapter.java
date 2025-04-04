@@ -59,7 +59,7 @@ public class VideoAdapter extends RecyclerView.Adapter<VideoAdapter.ViewHolder> 
             super(itemView);
 
             // initializing our views with their ids.
-            courseDescTV = itemView.findViewById(R.id.RecylcleDesc);
+            courseDescTV = itemView.findViewById(R.id.tylRecycleDesc);
         }
     }
 }

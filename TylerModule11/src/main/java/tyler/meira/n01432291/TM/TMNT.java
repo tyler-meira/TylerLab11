@@ -73,11 +73,11 @@ public class TMNT extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_t_m_n_t, container, false);
 
-        editCourseName = view.findViewById(R.id.editCourseName);
-        editCourseDesc = view.findViewById(R.id.editCourseDesc);
-        btnAdd = view.findViewById(R.id.btnAdd);
-        btnDelete = view.findViewById(R.id.btnDelete);
-        recyclerView = view.findViewById(R.id.courseRv);
+        editCourseName = view.findViewById(R.id.tylEditName);
+        editCourseDesc = view.findViewById(R.id.tylEditDesc);
+        btnAdd = view.findViewById(R.id.tylBtnAdd);
+        btnDelete = view.findViewById(R.id.tylBtnDelete);
+        recyclerView = view.findViewById(R.id.tylCourseRV);
 
         editCourseName.setFilters(new InputFilter[]{new InputFilter.AllCaps()});
 

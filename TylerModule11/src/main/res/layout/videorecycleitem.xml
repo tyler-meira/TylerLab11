@@ -14,7 +14,7 @@
 
         <!--text view for our course name-->
         <TextView
-            android:id="@+id/RecylcleDesc"
+            android:id="@+id/tylRecycleDesc"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:padding="8dp"

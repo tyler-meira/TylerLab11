@@ -2,12 +2,7 @@ package tyler.meira.n01432291.TM;
 
 import static android.content.Context.MODE_PRIVATE;
 
-import static androidx.core.content.ContextCompat.getSystemService;
-
-import android.content.Context;
 import android.content.SharedPreferences;
-import android.net.ConnectivityManager;
-import android.net.NetworkInfo;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -17,8 +12,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
-import android.widget.Button;
-import android.widget.ProgressBar;
 import android.widget.RadioGroup;
 import android.widget.AdapterView;
 import android.widget.Spinner;
@@ -35,31 +28,8 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
-import android.graphics.Bitmap;
-import android.os.AsyncTask;
-import android.os.Bundle;
-import android.util.Log;
-import android.view.View;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.TextView;
+
 import android.widget.Toast;
-
-import androidx.appcompat.app.AppCompatActivity;
-
-import org.json.JSONArray;
-import org.json.JSONObject;
-
-import java.io.BufferedInputStream;
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
-import java.net.URL;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
 
 public class Me2ira extends Fragment {
 
@@ -106,10 +76,10 @@ public class Me2ira extends Fragment {
         SharedPreferences sharedPreferences = getContext().getSharedPreferences("shared preferences", MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPreferences.edit();
 
-        RadioGroup radioGroup = view.findViewById(R.id.rg);
-        Spinner spinner = view.findViewById(R.id.spinner2);
-        details = view.findViewById(R.id.txtDetails);
-        temp = view.findViewById(R.id.txtTemperature);
+        RadioGroup radioGroup = view.findViewById(R.id.tylRG);
+        Spinner spinner = view.findViewById(R.id.tylSpinner2);
+        details = view.findViewById(R.id.tylDetails);
+        temp = view.findViewById(R.id.tylTemp);
 
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(
                 getContext(),
@@ -122,19 +92,19 @@ public class Me2ira extends Fragment {
 
         isCelsius = sharedPreferences.getBoolean("isCelsius", true);
         if(isCelsius){
-            radioGroup.check(R.id.radioCelsius);
+            radioGroup.check(R.id.tylRadioCelsius);
         }
         else{
-            radioGroup.check(R.id.radioFahrenheit);
+            radioGroup.check(R.id.tylRadioFahrenheit);
         }
 
         radioGroup.setOnCheckedChangeListener((group, checkedId) -> {
-            if (checkedId == R.id.radioCelsius) {
+            if (checkedId == R.id.tylRadioCelsius) {
                 editor.putBoolean("isCelsius", true);
                 isCelsius = true;
                 editor.apply();
             }
-            if (checkedId == R.id.radioFahrenheit) {
+            if (checkedId == R.id.tylRadioFahrenheit) {
                 editor.putBoolean("isCelsius", false);
                 isCelsius = false;
                 editor.apply();
