@@ -21,5 +21,47 @@
     </string-array>
 
     <string name="apikey">6b7a08aa941fe519faad839637ee99a8</string>
+    <string name="shared_preferences">préférences partagées</string>
+    <string name="iscelsius">estCelsius</string>
+    <string name="weather">météo</string>
+    <string name="coord">coordonnées</string>
+    <string name="sys">système</string>
+    <string name="main">principal</string>
+    <string name="lon">"Lon : "</string>
+    <string name="lat">"\nLat : "</string>
+    <string name="country">"\nPays : "</string>
+    <string name="city">"\nVille : "</string>
+    <string name="humidity">"\nHumidité : "</string>
+    <string name="description">"\nDescription : "</string>
+    <string name="temperature">"Température : "</string>
+    <string name="weathererror">"Erreur météo : "</string>
+    <string name="r_array_videos_is_empty_check_strings_xml">R.array.Videos est vide. Vérifiez strings.xml.</string>
+    <string name="recyclerview_not_found_check_xml_id">RecyclerView introuvable. Vérifiez l'ID XML.</string>
+    <string name="tyler_meira">Tyler Meira</string>
+    <string name="tyler_meira_failed">Tyler Meira, Échec</string>
+    <string name="tyler_meira_success">Tyler Meira, Succès</string>
+    <string name="please_enable_location_services">Veuillez activer les services de localisation</string>
+    <string name="location">"Localisation : "</string>
+    <string name="comma">", "</string>
+    <string name="no_location_available_try_moving_to_get_a_fix">Aucune localisation disponible. Essayez de bouger pour obtenir un signal.</string>
+    <string name="location_permission_denied">Autorisation de localisation refusée</string>
+    <string name="location_permission_needed">Autorisation de localisation requise</string>
+    <string name="this_app_needs_location_permission_to_show_your_current_location">Cette application a besoin de l'autorisation de localisation pour afficher votre position actuelle</string>
+    <string name="ok">OK</string>
+    <string name="permission_granted">Autorisation accordée</string>
+    <string name="location_permission_required_for_this_feature">Autorisation de localisation requise pour cette fonctionnalité</string>
+    <string name="settings">PARAMÈTRES</string>
+    <string name="shows_your_current_location">Affiche votre position actuelle</string>
+    <string name="current_location">Position actuelle</string>
+    <string name="lat_s_lon_s">Lat : %s, Lon : %s</string>
+    <string name="course_name_is_required">Le nom du cours est requis !</string>
+    <string name="invalid_format_use_abcd_1234">Format invalide ! Utilisez : ABCD-1234</string>
+    <string name="course_description_is_required">La description du cours est requise !</string>
+    <string name="course_added">Cours ajouté !</string>
+    <string name="no_data_to_delete">Aucune donnée à supprimer.</string>
+    <string name="all_courses_deleted">Tous les cours supprimés !</string>
+    <string name="couldnt_fetch_data">Impossible de récupérer les données !</string>
+    <string name="failed_to_load_image">Échec du chargement de l'image</string>
+
 
 </resources>
