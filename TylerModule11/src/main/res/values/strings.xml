@@ -21,5 +21,46 @@
     </string-array>
 
     <string name="apikey">6b7a08aa941fe519faad839637ee99a8</string>
+    <string name="shared_preferences">shared preferences</string>
+    <string name="iscelsius">isCelsius</string>
+    <string name="weather">weather</string>
+    <string name="coord">coord</string>
+    <string name="sys">sys</string>
+    <string name="main">main</string>
+    <string name="lon">"Lon: "</string>
+    <string name="lat">"\nLat: "</string>
+    <string name="country">"\nCountry: "</string>
+    <string name="city">"\nCity: "</string>
+    <string name="humidity">"\nHumidity: "</string>
+    <string name="description">"\nDescription: "</string>
+    <string name="temperature">"Temperature: "</string>
+    <string name="weathererror">"WeatherError: "</string>
+    <string name="r_array_videos_is_empty_check_strings_xml">R.array.Videos is empty. Check strings.xml.</string>
+    <string name="recyclerview_not_found_check_xml_id">RecyclerView not found. Check XML ID.</string>
+    <string name="tyler_meira">Tyler Meira</string>
+    <string name="tyler_meira_failed">Tyler Meira, Failed</string>
+    <string name="tyler_meira_success">Tyler Meira, Success</string>
+    <string name="please_enable_location_services">Please enable location services</string>
+    <string name="location">"Location: "</string>
+    <string name="comma">", "</string>
+    <string name="no_location_available_try_moving_to_get_a_fix">No location available. Try moving to get a fix.</string>
+    <string name="location_permission_denied">Location permission denied</string>
+    <string name="location_permission_needed">Location Permission Needed</string>
+    <string name="this_app_needs_location_permission_to_show_your_current_location">This app needs location permission to show your current location</string>
+    <string name="ok">OK</string>
+    <string name="permission_granted">Permission granted</string>
+    <string name="location_permission_required_for_this_feature">Location permission required for this feature</string>
+    <string name="settings">SETTINGS</string>
+    <string name="shows_your_current_location">Shows your current location</string>
+    <string name="current_location">Current Location</string>
+    <string name="lat_s_lon_s">Lat: %s, Lon: %s</string>
+    <string name="course_name_is_required">Course name is required!</string>
+    <string name="invalid_format_use_abcd_1234">Invalid format! Use: ABCD-1234</string>
+    <string name="course_description_is_required">Course description is required!</string>
+    <string name="course_added">Course added!</string>
+    <string name="no_data_to_delete">No data to delete.</string>
+    <string name="all_courses_deleted">All courses deleted!</string>
+    <string name="couldnt_fetch_data">Couldnt Fetch Data!</string>
+    <string name="failed_to_load_image">Failed to load image</string>
 
 </resources>

@@ -66,7 +66,7 @@ public class N01432291 extends Fragment {
 
 
         if (courseRV == null) {
-            throw new NullPointerException("RecyclerView not found. Check XML ID.");
+            throw new NullPointerException(getString(R.string.recyclerview_not_found_check_xml_id));
         }
 
         fillArrayList();
@@ -116,7 +116,7 @@ public class N01432291 extends Fragment {
         String[] descriptions = getResources().getStringArray(R.array.Videos);
 
         if (descriptions.length == 0) {
-            throw new IllegalStateException("R.array.Videos is empty. Check strings.xml.");
+            throw new IllegalStateException(getString(R.string.r_array_videos_is_empty_check_strings_xml));
         }
 
         for (String desc : descriptions) {

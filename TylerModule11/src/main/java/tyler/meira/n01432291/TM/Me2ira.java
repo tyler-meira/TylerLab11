@@ -73,7 +73,7 @@ public class Me2ira extends Fragment {
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_me2ira, container, false);
 
-        SharedPreferences sharedPreferences = getContext().getSharedPreferences("shared preferences", MODE_PRIVATE);
+        SharedPreferences sharedPreferences = getContext().getSharedPreferences(getString(R.string.shared_preferences), MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPreferences.edit();
 
         RadioGroup radioGroup = view.findViewById(R.id.tylRG);
@@ -90,7 +90,7 @@ public class Me2ira extends Fragment {
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner.setAdapter(adapter);
 
-        isCelsius = sharedPreferences.getBoolean("isCelsius", true);
+        isCelsius = sharedPreferences.getBoolean(getString(R.string.iscelsius), true);
         if(isCelsius){
             radioGroup.check(R.id.tylRadioCelsius);
         }
@@ -191,31 +191,31 @@ public class Me2ira extends Fragment {
         try {
             JSONObject weatherJson = new JSONObject(jsonObjectResult);
 
-            JSONArray dataArray1 = weatherJson.getJSONArray("weather");
-            JSONObject coordObject = weatherJson.getJSONObject("coord");
-            JSONObject sysObject = weatherJson.getJSONObject("sys");
-            JSONObject mainObject = weatherJson.getJSONObject("main");
+            JSONArray dataArray1 = weatherJson.getJSONArray(getString(R.string.weather));
+            JSONObject coordObject = weatherJson.getJSONObject(getString(R.string.coord));
+            JSONObject sysObject = weatherJson.getJSONObject(getString(R.string.sys));
+            JSONObject mainObject = weatherJson.getJSONObject(getString(R.string.main));
 
             String strResults = "";
 
-            strResults += "Lon: " + coordObject.getDouble("lon");
-            strResults += "\nLat: " + coordObject.getDouble("lat");
-            strResults += "\nCountry: " + sysObject.getString("country");
-            strResults += "\nCity: " + weatherJson.getString("name");
-            strResults += "\nHumidity: " + mainObject.getInt("humidity");
+            strResults += getString(R.string.lon) + coordObject.getDouble("lon");
+            strResults += getString(R.string.lat) + coordObject.getDouble("lat");
+            strResults += getString(R.string.country) + sysObject.getString("country");
+            strResults += getString(R.string.city) + weatherJson.getString("name");
+            strResults += getString(R.string.humidity) + mainObject.getInt("humidity");
 
             for (int i = 0; i < dataArray1.length(); i++) {
                 JSONObject jsonObject = dataArray1.getJSONObject(i);
-                strResults += "\nDescription: " + jsonObject.getString("description");
+                strResults += getString(R.string.description) + jsonObject.getString("description");
             }
             if(isCelsius){
-                temp.setText("Temperature: " + round(mainObject.getDouble("temp")));
+                temp.setText(getString(R.string.temperature) + round(mainObject.getDouble("temp")));
             }else{
-                temp.setText("Temperature: " + round(celsiusToFahrenheit(mainObject.getDouble("temp"))));
+                temp.setText(getString(R.string.temperature) + round(celsiusToFahrenheit(mainObject.getDouble("temp"))));
             }
             details.setText(strResults);
         } catch (Exception e) {
-            Toast.makeText(getContext(), "WeatherError: " + e.getMessage(), Toast.LENGTH_SHORT).show();
+            Toast.makeText(getContext(), getString(R.string.weathererror) + e.getMessage(), Toast.LENGTH_SHORT).show();
             e.printStackTrace();
         }
     }

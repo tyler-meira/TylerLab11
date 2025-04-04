@@ -122,7 +122,7 @@ public class Ty1ler extends Fragment {
                         if (bitmap != null) {
                             imageView.setImageBitmap(bitmap);
                         } else {
-                            Toast.makeText(view.getContext(), "Failed to load image", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(view.getContext(), getString(R.string.failed_to_load_image), Toast.LENGTH_SHORT).show();
                         }
                     });
                 }

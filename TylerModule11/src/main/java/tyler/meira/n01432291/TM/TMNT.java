@@ -105,17 +105,17 @@ public class TMNT extends Fragment {
 
         // Validate input fields
         if (TextUtils.isEmpty(name)) {
-            editCourseName.setError("Course name is required!");
+            editCourseName.setError(getString(R.string.course_name_is_required));
             return;
         }
 
         if (!isValidCourseName(name)) {
-            editCourseName.setError("Invalid format! Use: ABCD-1234");
+            editCourseName.setError(getString(R.string.invalid_format_use_abcd_1234));
             return;
         }
 
         if (TextUtils.isEmpty(desc)) {
-            editCourseDesc.setError("Course description is required!");
+            editCourseDesc.setError(getString(R.string.course_description_is_required));
             return;
         }
 
@@ -127,7 +127,7 @@ public class TMNT extends Fragment {
 
         editCourseDesc.setText("");
 
-        Toast.makeText(getContext(), "Course added!", Toast.LENGTH_SHORT).show();
+        Toast.makeText(getContext(), getString(R.string.course_added), Toast.LENGTH_SHORT).show();
     }
 
     private boolean isValidCourseName(String name) {
@@ -136,14 +136,14 @@ public class TMNT extends Fragment {
 
     private void deleteAllCourses() {
         if (courseList.isEmpty()) {
-            Toast.makeText(getContext(), "No data to delete.", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getContext(), getString(R.string.no_data_to_delete), Toast.LENGTH_SHORT).show();
             return;
         }
 
         databaseReference.removeValue();
         courseList.clear();
         adapter.notifyDataSetChanged();
-        Toast.makeText(getContext(), "All courses deleted!", Toast.LENGTH_SHORT).show();
+        Toast.makeText(getContext(), getString(R.string.all_courses_deleted), Toast.LENGTH_SHORT).show();
     }
 
     private void fetchCourses(){
@@ -155,14 +155,13 @@ public class TMNT extends Fragment {
                 for (DataSnapshot dataSnapshot : snapshot.getChildren()){
                     CourseModal modal = dataSnapshot.getValue(CourseModal.class);
                     courseList.add(modal);
-                    Log.d("TMNT", "Fetched Course: " + modal.getCourseName());
                 }
                 adapter.notifyDataSetChanged();
             }
 
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
-                Toast.makeText(getContext(), "Couldnt Fetch Data!", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getContext(), getString(R.string.couldnt_fetch_data), Toast.LENGTH_SHORT).show();
             }
         });
     }

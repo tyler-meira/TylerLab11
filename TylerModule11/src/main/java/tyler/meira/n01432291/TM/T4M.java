@@ -113,18 +113,18 @@ public class T4M extends Fragment {
             public void onAdClicked() {
                 super.onAdClicked();
                 adCount++;
-                Toast.makeText(getContext(), "Tyler Meira" + adCount, Toast.LENGTH_LONG).show();
+                Toast.makeText(getContext(), R.string.tyler_meira + adCount, Toast.LENGTH_LONG).show();
             }
 
             @Override
             public void onAdFailedToLoad(@NonNull LoadAdError loadAdError) {
                 super.onAdFailedToLoad(loadAdError);
-                Toast.makeText(getContext(), "Tyler Meira, Failed" + adCount, Toast.LENGTH_LONG).show();
+                Toast.makeText(getContext(), R.string.tyler_meira_failed + adCount, Toast.LENGTH_LONG).show();
             }
 
             public void onAdLoaded() {
                 super.onAdLoaded();
-                Toast.makeText(getContext(), "Tyler Meira, Success" + adCount, Toast.LENGTH_LONG).show();
+                Toast.makeText(getContext(), R.string.tyler_meira_success + adCount, Toast.LENGTH_LONG).show();
             }
         });
 
@@ -162,7 +162,7 @@ public class T4M extends Fragment {
         boolean isNetworkEnabled = lm.isProviderEnabled(LocationManager.NETWORK_PROVIDER);
 
         if (!isGPSEnabled && !isNetworkEnabled) {
-            Toast.makeText(getContext(), "Please enable location services", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getContext(), getString(R.string.please_enable_location_services), Toast.LENGTH_SHORT).show();
             return;
         }
 
@@ -180,23 +180,23 @@ public class T4M extends Fragment {
             if (location != null) {
                 String lat = String.valueOf(location.getLatitude());
                 String lon = String.valueOf(location.getLongitude());
-                Toast.makeText(getContext(), "Location: " + lat + ", " + lon, Toast.LENGTH_SHORT).show();
+                Toast.makeText(getContext(), getString(R.string.location) + lat + getString(R.string.comma) + lon, Toast.LENGTH_SHORT).show();
                 notification(lat, lon);
             } else {
-                Toast.makeText(getContext(), "No location available. Try moving to get a fix.", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getContext(), getString(R.string.no_location_available_try_moving_to_get_a_fix), Toast.LENGTH_SHORT).show();
             }
         } catch (SecurityException e) {
             e.printStackTrace();
-            Toast.makeText(getContext(), "Location permission denied", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getContext(), getString(R.string.location_permission_denied), Toast.LENGTH_SHORT).show();
         }
     }
 
     private void requestLocationPermission() {
         if (ActivityCompat.shouldShowRequestPermissionRationale(getActivity(), Manifest.permission.ACCESS_FINE_LOCATION)) {
             new AlertDialog.Builder(getContext())
-                    .setTitle("Location Permission Needed")
-                    .setMessage("This app needs location permission to show your current location")
-                    .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                    .setTitle(getString(R.string.location_permission_needed))
+                    .setMessage(getString(R.string.this_app_needs_location_permission_to_show_your_current_location))
+                    .setPositiveButton(getString(R.string.ok), new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
                             ActivityCompat.requestPermissions(getActivity(),
@@ -226,13 +226,13 @@ public class T4M extends Fragment {
         if (requestCode == LOCATION_PERMISSION_REQUEST_CODE) {
             if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
                 isLocationPermissionGranted = true;
-                Toast.makeText(getContext(), "Permission granted", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getContext(), getString(R.string.permission_granted), Toast.LENGTH_SHORT).show();
                 getLocation();
             } else {
                 snackbar = Snackbar.make(getView(),
-                                "Location permission required for this feature",
+                                getString(R.string.location_permission_required_for_this_feature),
                                 Snackbar.LENGTH_INDEFINITE)
-                        .setAction("SETTINGS", v -> {
+                        .setAction(R.string.settings, v -> {
                             // Open app settings when user taps SETTINGS
                             Intent intent = new Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS);
                             Uri uri = Uri.fromParts("package", requireActivity().getPackageName(), null);
@@ -258,7 +258,7 @@ public class T4M extends Fragment {
                     "LocationChannel",
                     "Location Notifications",
                     NotificationManager.IMPORTANCE_HIGH);
-            channel.setDescription("Shows your current location");
+            channel.setDescription(getString(R.string.shows_your_current_location));
             channel.enableVibration(true);
             channel.setVibrationPattern(new long[]{500, 500});
 
@@ -267,8 +267,8 @@ public class T4M extends Fragment {
 
         NotificationCompat.Builder builder = new NotificationCompat.Builder(getContext(), "LocationChannel")
                 .setSmallIcon(R.drawable.pin)
-                .setContentTitle("Current Location")
-                .setContentText(String.format("Lat: %s, Lon: %s", lat, lon))
+                .setContentTitle(getString(R.string.current_location))
+                .setContentText(String.format((getString(R.string.lat_s_lon_s)), lat, lon))
                 .setPriority(NotificationCompat.PRIORITY_HIGH)
                 .setAutoCancel(true);
 
