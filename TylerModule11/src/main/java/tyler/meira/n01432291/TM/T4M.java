@@ -180,7 +180,14 @@ public class T4M extends Fragment {
             if (location != null) {
                 String lat = String.valueOf(location.getLatitude());
                 String lon = String.valueOf(location.getLongitude());
-                Toast.makeText(getContext(), getString(R.string.location) + lat + getString(R.string.comma) + lon, Toast.LENGTH_SHORT).show();
+                Snackbar.make(getView(), getString(R.string.location) + lat + getString(R.string.comma) + lon, Snackbar.LENGTH_INDEFINITE)
+                        .setAction("Dismiss", new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+                                //Do Nothing
+                            }
+                        })
+                        .show();
                 notification(lat, lon);
             } else {
                 Toast.makeText(getContext(), getString(R.string.no_location_available_try_moving_to_get_a_fix), Toast.LENGTH_SHORT).show();
